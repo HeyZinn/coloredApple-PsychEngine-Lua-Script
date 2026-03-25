@@ -1,0 +1,5 @@
+value1 = on/off
+
+on = turn on the event (duh)
+off = turn off the event (DUH)
+btw, it gets the sprite healthbar color
