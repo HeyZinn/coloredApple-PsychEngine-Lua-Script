@@ -5,9 +5,12 @@ local rBF = 0
 local gBF = 0
 local bBF = 0
 
+initialColor = 1
+
 local rDad = 0
 local gDad = 0
 local bDad = 0
+
 
 function onCreate()
     makeLuaSprite('bgBlack', '', -550, -470)
@@ -32,42 +35,36 @@ function onEvent(name, value1, value2)
         if value1 == nil then
             value1 = 'off'
         end
+        if tonumber(value2) == nil or tonumber(value2) < 0 then
+            value2 = 0
+        end
+        
         if value1 == 'on' then
-            setProperty('bgBlack.alpha', 1)
-            setProperty('boyfriend.colorTransform.redMultiplier', 0)
-            setProperty('boyfriend.colorTransform.greenMultiplier', 0)
-            setProperty('boyfriend.colorTransform.blueMultiplier', 0)
+            doTweenAlpha('fade','bgBlack', 1, value2, 'linear')
+            runHaxeCode([[
+                FlxTween.tween(boyfriend.colorTransform, {redMultiplier: 0, greenMultiplier: 0, blueMultiplier: 0, redOffset: ]] .. rBF .. [[, greenOffset: ]] .. gBF .. [[, blueOffset: ]] .. bBF .. [[}, ]] .. value2 .. [[);
+            ]])
 
-            setProperty('boyfriend.colorTransform.redOffset', rBF)
-            setProperty('boyfriend.colorTransform.greenOffset', gBF)
-            setProperty('boyfriend.colorTransform.blueOffset', bBF)
+            
 
-            setProperty('dad.colorTransform.redMultiplier', 0)
-            setProperty('dad.colorTransform.greenMultiplier', 0)
-            setProperty('dad.colorTransform.blueMultiplier', 0)
+            runHaxeCode([[
+                FlxTween.tween(dad.colorTransform, {redMultiplier: 0, greenMultiplier: 0, blueMultiplier: 0, redOffset: ]] .. rDad .. [[, greenOffset: ]] .. gDad .. [[, blueOffset: ]] .. bDad .. [[}, ]] .. value2 .. [[);
+            ]])
 
-            setProperty('dad.colorTransform.redOffset', rDad)
-            setProperty('dad.colorTransform.greenOffset', gDad)
-            setProperty('dad.colorTransform.blueOffset', bDad)
+            
         end
 
         if value1 == 'off' then
-            setProperty('bgBlack.alpha', 0.00001)
-            setProperty('boyfriend.colorTransform.redMultiplier', 1)
-            setProperty('boyfriend.colorTransform.greenMultiplier', 1)
-            setProperty('boyfriend.colorTransform.blueMultiplier', 1)
+            doTweenAlpha('fade','bgBlack', 0, value2, 'linear')
+            runHaxeCode([[
+                FlxTween.tween(boyfriend.colorTransform, {redMultiplier: 1, greenMultiplier: 1, blueMultiplier: 1, redOffset: ]] .. initialColor .. [[, greenOffset: ]] .. initialColor .. [[, blueOffset: ]] .. initialColor .. [[}, ]] .. value2 .. [[);
+            ]])
 
-            setProperty('boyfriend.colorTransform.redOffset', 0)
-            setProperty('boyfriend.colorTransform.greenOffset', 0)
-            setProperty('boyfriend.colorTransform.blueOffset', 0)
+            
 
-            setProperty('dad.colorTransform.redMultiplier', 1)
-            setProperty('dad.colorTransform.greenMultiplier', 1)
-            setProperty('dad.colorTransform.blueMultiplier', 1)
-
-            setProperty('dad.colorTransform.redOffset', 0)
-            setProperty('dad.colorTransform.greenOffset', 0)
-            setProperty('dad.colorTransform.blueOffset', 0)
+            runHaxeCode([[
+                FlxTween.tween(dad.colorTransform, {redMultiplier: 1, greenMultiplier: 1, blueMultiplier: 1, redOffset: ]] .. initialColor .. [[, greenOffset: ]] .. initialColor .. [[, blueOffset: ]] .. initialColor .. [[}, ]] .. value2 .. [[);
+            ]])
         end
        
 

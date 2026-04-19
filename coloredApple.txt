@@ -1,5 +1,12 @@
-value1 = on/off
+Add the coloredApple event to your chart:
 
-on = turn on the event (duh)
-off = turn off the event (DUH)
-btw, it gets the sprite healthbar color
+Value 1 (Status):
+
+on: Activates the effect (Black background + colored silhouette).
+
+off: Deactivates the effect (Smoothly returns to normal).
+
+
+Value 2 (Duration):
+
+The transition time in seconds (e.g., 1 for one second, 0.5 for half a second). If left empty, it will change instantly.
