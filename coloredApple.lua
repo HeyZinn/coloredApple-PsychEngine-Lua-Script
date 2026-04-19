@@ -35,11 +35,12 @@ function onEvent(name, value1, value2)
         if value1 == nil then
             value1 = 'off'
         end
-        if tonumber(value2) == nil or tonumber(value2) < 0 then
-            value2 = 0
+        if tonumber(value2) == nil or tonumber(value2) < 0  or value2 == 0 then
+            value2 = 0.0000001
         end
         
         if value1 == 'on' then
+            doTweenAlpha('gfade', 'gf', 0, value2, 'linear')
             doTweenAlpha('fade','bgBlack', 1, value2, 'linear')
             runHaxeCode([[
                 FlxTween.tween(boyfriend.colorTransform, {redMultiplier: 0, greenMultiplier: 0, blueMultiplier: 0, redOffset: ]] .. rBF .. [[, greenOffset: ]] .. gBF .. [[, blueOffset: ]] .. bBF .. [[}, ]] .. value2 .. [[);
