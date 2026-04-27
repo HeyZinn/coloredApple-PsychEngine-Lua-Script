@@ -10,6 +10,19 @@
 This script creates a stunning **colored silhouette effect** on characters based on their Health Bar colors. When triggered, the background fades to black, and the characters transition into solid glowing colors using smooth Haxe-based `ColorTransform` tweens.
 <br><br>
 
+---
+
+
+
+##  Patch Notes (v1.1.0)
+- **RNG Bug Fix:** Fixed a rare issue where GF's color transformation would randomly fail.
+- -- ***Technical fix:** Unified Alpha and ColorTransform into a single Haxe thread to prevent "Race Conditions" between Lua and Haxe.*
+  <br>
+- **Performance Optimization:** Reduced `runHaxeCode` calls by batching all character tweens into a single execution block.
+- **Perfect Sync:** Now using `alphaMultiplier` to ensure transparency and color transitions happen at the exact same frame.
+
+---
+
 ## (27/04/2026) Latest Update: GF Support & Focus Mode
 In the latest version, **Girlfriend (GF)** is now fully integrated into the effect:
 - **Dynamic Coloring:** GF now also transforms into her signature health bar color.
