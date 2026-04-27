@@ -2,7 +2,7 @@
 
 **Developed by:** `HeyZinn_`  
 **Category:** Visual / Color Transformation  
-**Engine:** Psych Engine (Haxe/Lua)
+**Engine:** Psych Engine & P-Slice Engine (Haxe/Lua)
 
 ---
 
