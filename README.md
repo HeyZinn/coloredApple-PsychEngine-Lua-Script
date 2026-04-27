@@ -14,12 +14,19 @@ This script creates a stunning **colored silhouette effect** on characters based
 
 
 
-##  Patch Notes (v1.1.0)
+## 27/04/2026 - Patch Notes (v1.1.0)
 - **RNG Bug Fix:** Fixed a rare issue where GF's color transformation would randomly fail.
 - -- ***Technical fix:** Unified Alpha and ColorTransform into a single Haxe thread to prevent "Race Conditions" between Lua and Haxe.*
   <br>
 - **Performance Optimization:** Reduced `runHaxeCode` calls by batching all character tweens into a single execution block.
 - **Perfect Sync:** Now using `alphaMultiplier` to ensure transparency and color transitions happen at the exact same frame.
+
+* **Hotfix:** Improved event parameter handling and stability.
+
+*   **Robust Parameter Validation:** Improved how `Value 2` (duration) is processed by the script.
+    *   **The Fix:** Added a proper `tonumber()` conversion to handle empty strings (`""`), `nil`, or `0` values. 
+    *   **Default State:** If no duration is provided in the Chart Editor, it now safely defaults to `0.001s` (instant) instead of potentially breaking the animation logic.
+*   **Logic Cleanup:** Removed redundant string-level checks, ensuring the event triggers reliably across all Psych Engine versions.
 
 ---
 
@@ -27,7 +34,11 @@ This script creates a stunning **colored silhouette effect** on characters based
 In the latest version, **Girlfriend (GF)** is now fully integrated into the effect:
 - **Dynamic Coloring:** GF now also transforms into her signature health bar color.
 - **Auto-Focus System:** When the event is active, GF's opacity is automatically reduced to **40% (0.4 alpha)**. This creates a "dimmed" effect that keeps the visual focus entirely on the Player and the Opponent while maintaining the atmospheric glow.
+  
+**+ WARNING: GF may appear lighter or darker if the song had an overlay filter.**
+
 <br><br>
+
 
 <img width="717" height="400" alt="image" src="https://github.com/user-attachments/assets/4f1e9da3-36fe-401a-b01a-72602c5a7441" />
 
