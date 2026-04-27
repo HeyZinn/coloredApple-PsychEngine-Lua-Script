@@ -15,9 +15,11 @@ local bDad = 0
 function onCreate()
     makeLuaSprite('bgBlack', '', -550, -470)
         
+        
     makeGraphic('bgBlack', 4000, 4000, '000000')
     addLuaSprite('bgBlack', false)
     setProperty('bgBlack.alpha', 0.00001)
+
     rBF = getProperty('boyfriend.healthColorArray[0]')
     gBF = getProperty('boyfriend.healthColorArray[1]')
     bBF = getProperty('boyfriend.healthColorArray[2]')
@@ -25,6 +27,10 @@ function onCreate()
     rDad = getProperty('dad.healthColorArray[0]')
     gDad = getProperty('dad.healthColorArray[1]')
     bDad = getProperty('dad.healthColorArray[2]')
+
+    rGF = getProperty('gf.healthColorArray[0]')
+    gGF = getProperty('gf.healthColorArray[1]')
+    bGF = getProperty('gf.healthColorArray[2]')
     
     
 
@@ -40,7 +46,8 @@ function onEvent(name, value1, value2)
         end
         
         if value1 == 'on' then
-            doTweenAlpha('gfade', 'gf', 0, value2, 'linear')
+            
+           
             doTweenAlpha('fade','bgBlack', 1, value2, 'linear')
             runHaxeCode([[
                 FlxTween.tween(boyfriend.colorTransform, {redMultiplier: 0, greenMultiplier: 0, blueMultiplier: 0, redOffset: ]] .. rBF .. [[, greenOffset: ]] .. gBF .. [[, blueOffset: ]] .. bBF .. [[}, ]] .. value2 .. [[);
@@ -52,6 +59,12 @@ function onEvent(name, value1, value2)
                 FlxTween.tween(dad.colorTransform, {redMultiplier: 0, greenMultiplier: 0, blueMultiplier: 0, redOffset: ]] .. rDad .. [[, greenOffset: ]] .. gDad .. [[, blueOffset: ]] .. bDad .. [[}, ]] .. value2 .. [[);
             ]])
 
+            runHaxeCode([[
+                FlxTween.tween(gf, {alpha: 0.4}, ]] .. value2 .. [[);
+                
+                FlxTween.tween(gf.colorTransform, {redMultiplier: 0, greenMultiplier: 0, blueMultiplier: 0, redOffset: ]] .. rGF .. [[, greenOffset: ]] .. gGF .. [[, blueOffset: ]] .. bGF .. [[}, ]] .. value2 .. [[);
+            ]])
+            
             
         end
 
@@ -66,6 +79,11 @@ function onEvent(name, value1, value2)
             runHaxeCode([[
                 FlxTween.tween(dad.colorTransform, {redMultiplier: 1, greenMultiplier: 1, blueMultiplier: 1, redOffset: ]] .. initialColor .. [[, greenOffset: ]] .. initialColor .. [[, blueOffset: ]] .. initialColor .. [[}, ]] .. value2 .. [[);
             ]])
+
+            runHaxeCode([[
+                FlxTween.tween(gf, {alpha: 1}, ]] .. value2 .. [[);
+                FlxTween.tween(gf.colorTransform, {redMultiplier: 1, greenMultiplier: 1, blueMultiplier: 1, redOffset: ]] .. initialColor .. [[, greenOffset: ]] .. initialColor .. [[, blueOffset: ]] .. initialColor .. [[}, ]] .. value2 .. [[);
+            ]])
         end
        
 
@@ -75,4 +93,6 @@ function onEvent(name, value1, value2)
     
 
 end
+
+
 
