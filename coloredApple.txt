@@ -1,11 +1,7 @@
-Add the coloredApple event to your chart:
-
 Value 1 (Status):
 
 on: Activates the effect (Black background + colored silhouette).
-
 off: Deactivates the effect (Smoothly returns to normal).
-
 
 Value 2 (Duration):
 
